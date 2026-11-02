@@ -38,16 +38,16 @@ The boundaries both arms work inside are in [AGENTS.md](AGENTS.md).
 
 | # | Slug | Tier | Criteria |
 |---|---|---|---|
-| | `clamp-window` | easy | 5 |
-| | `slugify-role` | easy | 5 |
-| | `parse-duration` | easy | 5 |
-| | `retry-plan` | medium | 7 |
-| | `evidence-index` | medium | 7 |
-| | `capacity-window` | medium | 7 |
-| | `lease-ledger` | long | 14 |
-| | `stage-graph` | long | 13 |
-| | `audit-trail` | long | 12 |
-| | `roster-assign` | long | 12 |
+| [#1](https://github.com/ahmashadani/midfleet-delivery-benchmark-blind/issues/1) | `clamp-window` | easy | 5 |
+| [#2](https://github.com/ahmashadani/midfleet-delivery-benchmark-blind/issues/2) | `slugify-role` | easy | 5 |
+| [#3](https://github.com/ahmashadani/midfleet-delivery-benchmark-blind/issues/3) | `parse-duration` | easy | 5 |
+| [#4](https://github.com/ahmashadani/midfleet-delivery-benchmark-blind/issues/4) | `retry-plan` | medium | 7 |
+| [#5](https://github.com/ahmashadani/midfleet-delivery-benchmark-blind/issues/5) | `evidence-index` | medium | 7 |
+| [#6](https://github.com/ahmashadani/midfleet-delivery-benchmark-blind/issues/6) | `capacity-window` | medium | 7 |
+| [#7](https://github.com/ahmashadani/midfleet-delivery-benchmark-blind/issues/7) | `lease-ledger` | long | 14 |
+| [#8](https://github.com/ahmashadani/midfleet-delivery-benchmark-blind/issues/8) | `stage-graph` | long | 13 |
+| [#9](https://github.com/ahmashadani/midfleet-delivery-benchmark-blind/issues/9) | `audit-trail` | long | 12 |
+| [#10](https://github.com/ahmashadani/midfleet-delivery-benchmark-blind/issues/10) | `roster-assign` | long | 12 |
 
 87 criteria in total. The easy tier is near-mechanical and little divergence is
 expected. The long tier is where an implementation can be substantially right and
