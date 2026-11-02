@@ -1,0 +1,11 @@
+{
+  "name": "midfleet-delivery-benchmark-blind",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\"",
+    "verify": "node --test \"test/**/*.test.js\""
+  }
+}

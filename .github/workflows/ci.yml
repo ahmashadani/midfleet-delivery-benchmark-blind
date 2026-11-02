@@ -1,0 +1,54 @@
+name: CI
+
+# The blind condition. CI runs the delivery's own tests and checks that the
+# repository's fixed parts are untouched. It does NOT run the acceptance criteria,
+# because the criteria are not in this repository and neither arm may see them.
+#
+# Scoring happens off this repository, after the run, one criterion at a time against
+# the pull request head.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      # These are the delivery's own tests. Passing them says the delivery agrees with
+      # itself, not that it meets the specification.
+      - run: npm run verify
+
+  guard:
+    name: boundaries respected
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: fixed files are unchanged
+        env:
+          BASE: ${{ github.base_ref }}
+        run: |
+          git fetch --no-tags origin "$BASE"
+          failed=0
+          for path in .github AGENTS.md README.md CRITERIA-COMMITMENT.md package.json package-lock.json; do
+            if ! git diff --quiet "origin/$BASE...HEAD" -- "$path"; then
+              echo "::error::This branch modifies $path, which the benchmark rules forbid."
+              git diff --stat "origin/$BASE...HEAD" -- "$path"
+              failed=1
+            fi
+          done
+          exit $failed
